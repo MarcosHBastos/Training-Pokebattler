@@ -9,7 +9,7 @@ import { Trainer } from '../models/trainer';
 })
 export class TrainerService {
 
-  private trainersUrl = 'http://192.168.56.1:8080/trainer';
+  private trainersUrl = 'http://localhost:8080/trainer';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,6 +29,10 @@ export class TrainerService {
 
   addTrainer(trainer: Trainer): Observable<Trainer> {
     return this.http.post<Trainer>(this.trainersUrl, trainer, this.httpOptions);
+  }
+
+  deleteTrainer(id: number): Observable<Trainer> {
+    return this.http.delete<Trainer>(this.trainersUrl + `/${id}`);
   }
 
 }

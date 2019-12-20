@@ -1,18 +1,25 @@
 <div class="container">
-  <a routerLink="/traineradd">Add Trainer</a>
+  <div routerLink="/traineradd" class="waves-effect waves-blue blue accent-2 btn custom-button">
+    <i class="material-icons left">add</i>New Trainer
+  </div>
 <h2>My Trainers</h2>
-<table class="highlight">
+<table class="z-depth-1 highlight blue">
   <thead>
     <tr>
       <th>Trainer</th>
+      <th class="center">Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let trainer of trainers">
       <td>{{ trainer.name }}</td>
-      <td>
-        <a routerLink="/trainerdetail/{{trainer.id}}">edit</a><br>
-        <a (click)="delete(trainer.id)">delete</a>
+      <td class="center">
+        <div routerLink="/trainerdetail/{{trainer.id}}" class="waves-effect waves-blue blue accent-2 btn custom-button">
+          <i class="material-icons left">edit</i>Alterar
+        </div>
+        <div (click)="delete(trainer.id)" class="waves-effect waves-red red accent-2 btn custom-button">
+          <i class="material-icons left white-text">delete</i>Excluir
+        </div>
       </td>
     </tr>
   </tbody>

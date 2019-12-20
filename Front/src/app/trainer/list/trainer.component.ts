@@ -32,6 +32,9 @@ export class TrainerComponent implements OnInit {
   }
 
   delete(id: number): void {
+    this.trainerService.deleteTrainer(id)
+        .subscribe(() => this.getTrainers());
+    console.log("Trainer deleted");
   }
 
 }
