@@ -24,9 +24,9 @@ export class PokemonAddComponent implements OnInit {
     this.pokemon = this.fb.group({
       name: ['', Validators.required],
       move: this.fb.group({
-        name: [''],
-        damage: [''],
-        type: ['']
+        name: ['', Validators.required],
+        damage: ['', Validators.required],
+        type: ['', Validators.required]
       })
     });
   }

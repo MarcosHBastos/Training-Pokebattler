@@ -9,34 +9,49 @@
   </button>
 </div>-->
 <div class="container">
-<form [formGroup]="pokemon" (ngSubmit)="onSubmit(pokemon)" method="POST">
-  
-  <label>
-    Name:
-    <input class="input" type="text" formControlName="name" required>
-  </label>
+  <form [formGroup]="pokemon" (ngSubmit)="onSubmit(pokemon)" method="POST">
+    <h5>Pokémon</h5>
+    <div class="row">
+      <div class="input-field col s6">
+        <div class="z-depth-1 custom-input">
+          Pokémon Name
+          <input type="text" class="validate" formControlName="name">
+        </div>
+      </div>
+    </div>
+    <div formGroupName="move">
+      <h5>Move</h5>
+      <div class="row">
+        <div class="input-field col l4 s12">
+          <div class="z-depth-1 custom-input">
+            Move Name
+            <input type="text" formControlName="name">
+          </div>
+        </div>
+        <div class="input-field col l4 s12">
+          <div class="z-depth-1 custom-input">
+            Damage:
+            <input type="number" formControlName="damage">
+          </div>
+        </div>
+        <div class="input-field col l4 s12">
+          <div class="z-depth-1 custom-input">
+            Type:
+            <input type="text" formControlName="type">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s3">
+        <button class="btn waves-effect waves-light custom-button blue" [disabled]="!pokemon.valid" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+      <div class="col s3">
+        <p class="red-text" *ngIf="!pokemon.valid">Please fill out all fields before Submit!</p>
+      </div>
+    </div>
 
-  <div formGroupName="move">
-    <h3>Move</h3>
-
-    <label>
-      Move Name:
-      <input type="text" formControlName="name">
-    </label>
-    
-    <label>
-      Damage:
-      <input type="number" formControlName="damage">
-    </label>
-  
-    <label>
-      Type:
-      <input type="text" formControlName="type">
-    </label>
-  </div>
-
-  <button type="submit" [disabled]="!pokemon.valid">Submit</button>
-</form>
-
-<p>Form Status: {{ pokemon.status }}</p>
+  </form>
 </div>

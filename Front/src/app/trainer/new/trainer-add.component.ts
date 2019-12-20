@@ -27,7 +27,7 @@ export class TrainerAddComponent implements OnInit {
   ngOnInit() {
     this.trainer = this.fb.group({
       name: ['', Validators.required],
-      pokemons: ['']
+      pokemons: ['', Validators.required]
     });
     this.getPokemons();
   }

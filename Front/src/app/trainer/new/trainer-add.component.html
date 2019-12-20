@@ -1,24 +1,37 @@
 <div class="container">
   <form [formGroup]="trainer" (ngSubmit)="onSubmit(trainer)" method="POST">
+    <h5>Trainer</h5>
+    <div class="row">
+      <div class="input-field col s6">
+        <div class="z-depth-1 custom-input">
+          Name:
+          <input type="text" class="validate" formControlName="name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col l4 s12">
+        <div class="z-depth-1 custom-input">
+          Trainer Pokémon
+          <select class="browser-default" formControlName="pokemons"> <!--without browser default it doesnt work because theres no materialize cdn-->
+            <option>-- select a pokemon --</option>
+            <option *ngFor="let pokemon of pokemons" [ngValue]="[pokemon]">
+              {{pokemon.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
 
-    <label>
-      Name:
-      <input class="input" type="text" formControlName="name" required>
-    </label>
-
-    <label>
-      Type:
-    </label>
-    <select class="" formControlName="pokemons">
-      <option>-- select a pokemon --</option>
-      <option *ngFor="let pokemon of pokemons" [ngValue]="[pokemon]">
-        {{pokemon.name}}
-      </option>
-    </select>
-    <br>
-
-    <button type="submit" [disabled]="!trainer.valid">Submit</button>
+    <div class="row">
+      <div class="col s3">
+        <button class="btn waves-effect waves-light custom-button blue" [disabled]="!trainer.valid" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+      <div class="col s3">
+        <p class="red-text" *ngIf="!trainer.valid">Please fill out all fields before Submit!</p>
+      </div>
+    </div>
   </form>
-
-  <p>Form Status: {{ trainer.status }}</p>
 </div>
