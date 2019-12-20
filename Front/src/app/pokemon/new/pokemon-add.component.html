@@ -1,0 +1,42 @@
+<!--Deprecated addition form
+  <div>
+  <label>Pokemon name:
+    <input #pokemonName />
+  </label>
+ (click) passes input value to add() and then clears the input
+  <button (click)="add(pokemonName.value);  pokemonName.value=''">
+    add
+  </button>
+</div>-->
+<div class="container">
+<form [formGroup]="pokemon" (ngSubmit)="onSubmit(pokemon)" method="POST">
+  
+  <label>
+    Name:
+    <input class="input" type="text" formControlName="name" required>
+  </label>
+
+  <div formGroupName="move">
+    <h3>Move</h3>
+
+    <label>
+      Move Name:
+      <input type="text" formControlName="name">
+    </label>
+    
+    <label>
+      Damage:
+      <input type="number" formControlName="damage">
+    </label>
+  
+    <label>
+      Type:
+      <input type="text" formControlName="type">
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="!pokemon.valid">Submit</button>
+</form>
+
+<p>Form Status: {{ pokemon.status }}</p>
+</div>

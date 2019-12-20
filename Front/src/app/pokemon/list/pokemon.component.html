@@ -1,0 +1,21 @@
+<div class="container">
+  <a routerLink="/pokemonadd">Add Pokemon</a>
+  <h3>Pokemon List</h3>
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>Pokemon</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pokemon of pokemons">
+        <td>{{ pokemon.name }}</td>
+        <td>
+          <a routerLink="/pokemondetail/{{pokemon.id}}">edit</a><br>
+          <a (click)="delete(pokemon.id)">delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br><br>
+</div>

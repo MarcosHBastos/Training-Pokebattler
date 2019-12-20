@@ -1,0 +1,19 @@
+<div class="container">
+  <a routerLink="/traineradd">Add Trainer</a>
+<h2>My Trainers</h2>
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>Trainer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let trainer of trainers">
+      <td>{{ trainer.name }}</td>
+      <td>
+        <a routerLink="/trainerdetail/{{trainer.id}}">edit</a><br>
+        <a (click)="delete(trainer.id)">delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

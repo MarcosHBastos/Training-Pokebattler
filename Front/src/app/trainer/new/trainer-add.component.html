@@ -1,0 +1,24 @@
+<div class="container">
+  <form [formGroup]="trainer" (ngSubmit)="onSubmit(trainer)" method="POST">
+
+    <label>
+      Name:
+      <input class="input" type="text" formControlName="name" required>
+    </label>
+
+    <label>
+      Type:
+    </label>
+    <select class="" formControlName="pokemons">
+      <option>-- select a pokemon --</option>
+      <option *ngFor="let pokemon of pokemons" [ngValue]="[pokemon]">
+        {{pokemon.name}}
+      </option>
+    </select>
+    <br>
+
+    <button type="submit" [disabled]="!trainer.valid">Submit</button>
+  </form>
+
+  <p>Form Status: {{ trainer.status }}</p>
+</div>
